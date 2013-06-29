@@ -5,7 +5,6 @@
 		$link_like_comment = $('.just-like-comment-link');
 		
 		// Ссылки на лайк
-		if ($link_like_post.length > 0) {
 			// Для каждой ссылки...
 			$link_like_post.each(function() {
 			
@@ -20,6 +19,7 @@
 						var theCount = $(this).next();
 						var postId = parseInt(relLikeLink.split('_')[1]);
 						
+						//alert(postId);
 						$.post(ajaxurl, {
 						action:	'like_post',
 						post_id:	postId,
@@ -28,7 +28,7 @@
 						}, function (response) {
 							if (response.success) {
 							//$.each(response, function(key, value) {
-							//	  alert(key + ': ' + value);
+								//  alert(key + ': ' + value);
 							//	});
 								if(theLink.hasClass('doLike')) {
 									theLink.removeClass('doLike');
@@ -48,9 +48,7 @@
 				});
 			
 			});
-		}
-		
-		if ($link_like_comment.length > 0) {
+
 			// Для каждой ссылки...
 			$link_like_comment.each(function() {
 			
@@ -65,19 +63,19 @@
 						var theLink = $(this);
 						var theCount = $(this).next();
 						var commentId = parseInt(relLikeLink.split('_')[1]);
-						
+						//alert(commentId);
 						//alert(commentId);
 						$.post(ajaxurl, {
 						action:	'like_comment',
 						comment_id:	commentId,
 						actionLike:	actionLike
-
+						
 						}, function (response) {
 							//alert(response['success']);
 							if (response.success) {
 							//$.each(response, function(key, value) {
 							//	  alert(key + ': ' + value);
-							//	});
+								//});
 								if (theLink.hasClass('doLike')) {
 									theLink.removeClass('doLike');
 									theLink.addClass('doUnlike');
@@ -96,7 +94,6 @@
 				});
 			
 			});
-		}
 		
 	});
 }(jQuery));

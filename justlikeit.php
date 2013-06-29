@@ -231,7 +231,7 @@ if (!class_exists('JustLikeIt')) {
 								'type' => 'like',
 								'count' => false
 							));	
-							$res = wp_delete_comment($com[0]->comment_ID, true);  
+							$res = wp_delete_comment($com[0]->comment_ID, true);  //1,true);//
 						}
 						
 						if($res){
@@ -242,6 +242,7 @@ if (!class_exists('JustLikeIt')) {
 								'count' => true
 							));
 							$response['counttext'] = $this->generate_count_label($count);
+							$response['ID'] = $com[0]->comment_ID;
 						}else{
 							$response = array('success' => false);
 						}
@@ -301,7 +302,7 @@ if (!class_exists('JustLikeIt')) {
 							// .....
 							$com = get_comments(array(
 								'user_id' => wp_get_current_user()->ID,
-								'comment_parent' => $_POST['comment_id'],
+								'parent' => $_POST['comment_id'],
 								'type' => 'like',
 								'count' => false
 							));	
@@ -316,6 +317,7 @@ if (!class_exists('JustLikeIt')) {
 								'count' => true
 							));							
 							$response['counttext'] = $this->generate_count_label($count);
+							$response['ID'] = $com[0]->comment_ID;
 						}else{
 							$response = array('success' => false);
 						}
