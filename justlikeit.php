@@ -8,13 +8,6 @@ Author: Rasko
 Author URI: http://casepress.org/
 */
 
-
-/* 			
-					1) 	Перенести вывод кол-ва комментариев в опцию		готово
-					2) 	Адекватное приглашение регистрации				не готово
-					3)  Функция вызова в теме плагина					готово ... не знаю как проверить
-*/
-			
 // Stop direct call
 if (!empty($_SERVER['SCRIPT_FILENAME']) && basename(__file__) == basename($_SERVER['SCRIPT_FILENAME']))
 	die ('Please do not load this page directly. Thanks!');
@@ -71,14 +64,12 @@ if (!class_exists('JustLikeIt')) {
 		function list_comments($comments='')
 		{
 			
-			//$comments = get_comments( array('post_id' => $otherID, 'status' => 'approve', 'order' => 'ASC') );
 			foreach($comments as $key => $comment){  
 				if ($comment->{'comment_type'} == 'like') 
 					{
 						unset($comments[$key]);
-					}//$res = wp_delete_comment($comment->comment_ID, true);
+					}
 			}  
-			//print_r($comments);
 			return $comments;
 		
 		}
@@ -133,7 +124,6 @@ if (!class_exists('JustLikeIt')) {
 		function generate_button($logged_in, $type, $content, $check, $id, $count)
 		{
 			$do = '" onclick="jQuery(\'#registerModal\').arcticmodal()';
-			//$do = 'doAuth';
 			$text = get_option('just_like_like_label');
 			if ($logged_in==1) {
 				$invite = '';
@@ -170,7 +160,6 @@ if (!class_exists('JustLikeIt')) {
 				return __('Одобрили ', 'just-like-it').$start.__(' пользователей', 'just-like-it').'.';
 			}
 			else{
-				//echo $newstr = str_replace($order, $replace, $str);
 				$return = get_option('just_like_count_tags');
 				return str_replace('$count', $count, $return);
 			}
@@ -231,7 +220,7 @@ if (!class_exists('JustLikeIt')) {
 								'type' => 'like',
 								'count' => false
 							));	
-							$res = wp_delete_comment($com[0]->comment_ID, true);  //1,true);//
+							$res = wp_delete_comment($com[0]->comment_ID, true);
 						}
 						
 						if($res){
