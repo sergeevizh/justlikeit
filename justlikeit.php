@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Just Like It
-Plugin URI: http://localhost/
+Plugin URI: http://casepress.org/
 Description: Just Like It - плагин добавляет кнопку 'Like' к постам и комментариям.
 Version: 0.1
 Author: Rasko
-Author URI: http://localhost/
+Author URI: http://casepress.org/
 */
 
 
