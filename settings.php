@@ -35,11 +35,11 @@ class JustLikeItSettings {
 	{
 		add_option('just_like_posts', 1);
 		add_option('just_like_comments', 1);
-		add_option('just_like_count_tags', '$count');
 		add_option('just_like_posts_like_accepted', '');
+		if (FALSE == get_option('just_like_count_tags')){ add_option( 'just_like_count_tags', '$count');  }
+		if (FALSE == get_option("just_like_no_auth")) { add_option( "just_like_no_auth", "<a href='$siteurl/wp-login.php?action=register'>Зарегистрируйтесь</a> или <a href='$siteurl/wp-login.php'>Авторизуйтесь</a> чтобы оценивать записи"); }
 		if (FALSE == get_option('just_like_like_label')){ add_option( 'just_like_like_label', '<img src=\'$img/heart.png\'/>');  }
 		if (FALSE == get_option('just_like_unlike_label')){	add_option( 'just_like_unlike_label', '<img src=\'$img/heart_active.png\'/>');  }
-		if (FALSE == get_option('just_like_no_auth')){	add_option( 'just_like_no_auth', 'Пожалуйста зарегистрируйтесь!');  }
 		
 		//  Сначала создаём секцию.
 		add_settings_section(
@@ -78,7 +78,7 @@ class JustLikeItSettings {
 				
 		add_settings_field(   
 			'just_like_like_label',	// ID used to identify the field throughout the theme  
-			__('Надпись мне нравится', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Надпись мне нравится ($img заменяется на адрес к папке IMG плагина)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_like_label_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -87,7 +87,7 @@ class JustLikeItSettings {
 
 		add_settings_field(   
 			'just_like_unlike_label',	// ID used to identify the field throughout the theme  
-			__('Надпись мне не нравится', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Надпись мне не нравится ($img заменяется на адрес к папке IMG плагина)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_unlike_label_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -105,7 +105,7 @@ class JustLikeItSettings {
 		
 		add_settings_field(   
 			'just_like_no_auth',	// ID used to identify the field throughout the theme  
-			__('Текст окна для незарегистрированных пользователей', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Текст окна для незарегистрированных пользователей ($siteurl заменяется на адрес сайта)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_no_auth_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
