@@ -3,6 +3,7 @@ if(!defined('ABSPATH') && !defined('WP_UNINSTALL_PLUGIN'))
     exit();
 
 	delete_option('just_like_posts');
+	delete_option('just_like_posts_like_accepted');
 	delete_option('just_like_comments');	
 	delete_option('just_like_count_tags');
 	delete_option('just_like_like_label');

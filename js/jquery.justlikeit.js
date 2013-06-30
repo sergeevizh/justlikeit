@@ -1,19 +1,18 @@
 (function($) {
     $(function() {
-	
+		//alert('Test');
 		$link_like_post = $('.just-like-post-link');
 		$link_like_comment = $('.just-like-comment-link');
 		
-			// Для каждой ссылки...
 			$link_like_post.each(function() {
 			
 				$(this).click(function() { 
 					var actionLike = ($(this).hasClass('doLike')) ? 'doLike' : 'doUnlike';
 						var relLikeLink = $(this).attr('rel');
 						var theLink = $(this);
-						var theCount = $(this).next();
 						var postId = parseInt(relLikeLink.split('_')[1]);
-
+						var theCount = $('#just-like-post-count-'+postId);
+						
 						$.post(ajaxurl, {
 						action:	'like_post',
 						post_id:	postId,
@@ -39,16 +38,15 @@
 			
 			});
 
-			// Для каждой ссылки...
 			$link_like_comment.each(function() {
 			
 				$(this).click(function() {
 					var actionLike = ($(this).hasClass('doLike')) ? 'doLike' : 'doUnlike';
 						var relLikeLink = $(this).attr('rel');
 						var theLink = $(this);
-						var theCount = $(this).next();
+						//var theCount = $(this).next();
 						var commentId = parseInt(relLikeLink.split('_')[1]);
-
+						var theCount = $('#just-like-comment-count-'+commentId);
 						$.post(ajaxurl, {
 						action:	'like_comment',
 						comment_id:	commentId,

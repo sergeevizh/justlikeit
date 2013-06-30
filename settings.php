@@ -35,10 +35,11 @@ class JustLikeItSettings {
 	{
 		add_option('just_like_posts', 1);
 		add_option('just_like_comments', 1);
-		add_option('just_like_count_tags', '');
-		if (FALSE == get_option('just_like_like_label')){ add_option( 'just_like_like_label', __('Мне нравится!', 'just-like-it'));  }
-		if (FALSE == get_option('just_like_unlike_label')){	add_option( 'just_like_unlike_label', __('Мне не нравится!', 'just-like-it'));  }
-		if (FALSE == get_option('just_like_no_auth')){	add_option( 'just_like_no_auth', __('Пожалуйста зарегистрируйтесь!', 'just-like-it'));  }
+		add_option('just_like_count_tags', '$count');
+		add_option('just_like_posts_like_accepted', '');
+		if (FALSE == get_option('just_like_like_label')){ add_option( 'just_like_like_label', '<img src=\'$img/heart.png\'/>');  }
+		if (FALSE == get_option('just_like_unlike_label')){	add_option( 'just_like_unlike_label', '<img src=\'$img/heart_active.png\'/>');  }
+		if (FALSE == get_option('just_like_no_auth')){	add_option( 'just_like_no_auth', 'Пожалуйста зарегистрируйтесь!');  }
 		
 		//  Сначала создаём секцию.
 		add_settings_section(
@@ -52,6 +53,15 @@ class JustLikeItSettings {
 			'just_like_posts',	// ID used to identify the field throughout the theme  
 			__('Разрешить ставить лайки к постам', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_posts_callback'),	// The name of the function responsible for rendering the option interface  
+			$this->settingOptionPage,	// The page on which this option will be displayed  
+			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
+			array()	// Arg  
+		); 
+		
+		add_settings_field(   
+			'just_like_posts_like_accepted',	// ID used to identify the field throughout the theme  
+			__('Типы постов, к которым разрешены лайки, через запятую (пустое поле = ко всем)', 'just-like-it'),	// The label to the left of the option interface element  
+			array(&$this,'just_like_posts_like_accepted_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
 			array()	// Arg  
@@ -103,6 +113,7 @@ class JustLikeItSettings {
 		); 
 		
 		register_setting('just_like_options_plugin_section', 'just_like_posts');
+		register_setting('just_like_options_plugin_section', 'just_like_posts_like_accepted');
 		register_setting('just_like_options_plugin_section', 'just_like_comments');
 		register_setting('just_like_options_plugin_section', 'just_like_like_label');
 		register_setting('just_like_options_plugin_section', 'just_like_unlike_label');
@@ -117,11 +128,15 @@ class JustLikeItSettings {
 	
 	function just_like_posts_callback()
 	{
-		echo '<input name="just_like_posts" type="checkbox" value="1" ' . checked( 1, get_option('just_like_posts'), false ) . ' />';
+		echo "<input name='just_like_posts' type='checkbox' value='1' " . checked( 1, get_option('just_like_posts'), false ) . " />";
+	}
+	function just_like_posts_like_accepted_callback()
+	{
+		echo '<input name="just_like_posts_like_accepted" type="text" value="' . get_option('just_like_posts_like_accepted') . '" />';
 	}
 	function just_like_comments_callback()
 	{
-		echo '<input name="just_like_comments" type="checkbox" value="1" ' . checked( 1, get_option('just_like_comments'), false ) . ' />';
+		echo "<input name='just_like_comments' type='checkbox' value='1' " . checked( 1, get_option('just_like_comments'), false ) . " />";
 	}
 	function just_like_like_label_callback()
 	{

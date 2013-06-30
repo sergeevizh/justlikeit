@@ -1,13 +1,18 @@
 <?php
 /*
 Plugin Name: Just Like It
-Plugin URI: http://casepress.org/
+Plugin URI: http://localhost/
 Description: Just Like It - плагин добавляет кнопку 'Like' к постам и комментариям.
 Version: 0.1
 Author: Rasko
-Author URI: http://casepress.org/
+Author URI: http://localhost/
 */
-
+	
+			/* 	1)	Опция, к каким типам постов можно ставить лайки			+
+				2) 	В зависимости от опции...
+					а)	Вывод кнопок										-
+					б)	Проверка в функции лайка 
+					*/
 // Stop direct call
 if (!empty($_SERVER['SCRIPT_FILENAME']) && basename(__file__) == basename($_SERVER['SCRIPT_FILENAME']))
 	die ('Please do not load this page directly. Thanks!');
@@ -63,7 +68,6 @@ if (!class_exists('JustLikeIt')) {
 		
 		function list_comments($comments='')
 		{
-			
 			foreach($comments as $key => $comment){  
 				if ($comment->{'comment_type'} == 'like') 
 					{
@@ -71,14 +75,18 @@ if (!class_exists('JustLikeIt')) {
 					}
 			}  
 			return $comments;
-		
 		}
 		
 		function link_like_post($content='') 
 		{
 			$check = $logged_in = 0;
 			$id = get_the_ID();
-
+			$type = get_post_type($id);
+			$accepted = preg_replace('/\s/', '', get_option('just_like_posts_like_accepted'));
+			if ($accepted)	{
+				$accepted = explode(",", $accepted);
+				if(!in_array($type, $accepted)) return $content;
+			}						
 			if (is_user_logged_in()) {
 				$logged_in = 1;
 
@@ -124,20 +132,20 @@ if (!class_exists('JustLikeIt')) {
 		function generate_button($logged_in, $type, $content, $check, $id, $count)
 		{
 			$do = '" onclick="jQuery(\'#registerModal\').arcticmodal()';
-			$text = get_option('just_like_like_label');
+			$text = str_replace('$img', $this->pluginUrl . '/img/', get_option('just_like_like_label'));
 			if ($logged_in==1) {
 				$invite = '';
 				if ($check == 0) {			
 					$do = 'doLike';
 				}
 				else {
-					$text = get_option('just_like_unlike_label');
+					$text = str_replace('$img', $this->pluginUrl . '/img/', get_option('just_like_unlike_label'));
 					$do = 'doUnlike';
 				}	
 				
 			}
 
-			$content = $content.'<div class="just-like-'.$type.'-frame"><a href="#" rel="'.$type.'_'.$id.'" class="just-like-'.$type.'-link '.$do.'">'.$text.'</a><span class="just-like-'.$type.'-count">'.$this->generate_count_label($count).'</span></div>';
+			$content = $content.'<div class="just-like-'.$type.'-frame"><span id="just-like-'.$type.'-count-'.$id.'" class="just-like-'.$type.'-count">'.$this->generate_count_label($count).'</span><a href="#" rel="'.$type.'_'.$id.'" class="just-like-'.$type.'-link '.$do.'">'.$text.'</a></div>';
 			$content .= '<div class="g-hidden">
 						<div class="box-modal" id="registerModal">
 							<div class="box-modal_close arcticmodal-close">закрыть</div>'.
@@ -169,8 +177,8 @@ if (!class_exists('JustLikeIt')) {
 		{
 			$html = '<script type="text/javascript">';
 			$html .= 'var ajaxurl = "' . admin_url('admin-ajax.php') . '";';
-			$html .= 'var likeLabel = "'.get_option('just_like_like_label').'";';
-			$html .= 'var unLikeLabel = "'.get_option('just_like_unlike_label').'";';
+			$html .= 'var likeLabel = "'.str_replace('$img', $this->pluginUrl . '/img/', get_option('just_like_like_label')).'";';
+			$html .= 'var unLikeLabel = "'.str_replace('$img', $this->pluginUrl . '/img/', get_option('just_like_unlike_label')).'";';
 		    $html .= '</script>';
 
 			echo $html;
