@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: justlikeit\n"
-"POT-Creation-Date: 2013-06-30 12:32+0600\n"
-"PO-Revision-Date: 2013-06-30 12:33+0600\n"
+"POT-Creation-Date: 2013-06-30 15:35+0600\n"
+"PO-Revision-Date: 2013-06-30 15:39+0600\n"
 "Last-Translator: \n"
 "Language-Team: Rasko <trasyhoob@gmail.com>\n"
 "Language: ru_RU\n"
@@ -15,69 +15,68 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: D:\\Repo\\justlikeit\n"
 
-#: D:\Repo\justlikeit/justlikeit.php:165 D:\Repo\justlikeit/justlikeit.php:166
-#: D:\Repo\justlikeit/justlikeit.php:168
-msgid "Одобрили "
-msgstr ""
+#: D:\Repo\justlikeit/justlikeit.php:161 D:\Repo\justlikeit/justlikeit.php:162
+msgid "Liked by "
+msgstr "Понравилось"
 
-#: D:\Repo\justlikeit/justlikeit.php:165 D:\Repo\justlikeit/justlikeit.php:168
-msgid " пользователей"
-msgstr ""
+#: D:\Repo\justlikeit/justlikeit.php:161
+msgid " user"
+msgstr "пользователю"
 
-#: D:\Repo\justlikeit/justlikeit.php:166
-msgid " пользователя"
-msgstr ""
-
-#: D:\Repo\justlikeit/justlikeit.php:167
-msgid "Одобрил "
-msgstr ""
-
-#: D:\Repo\justlikeit/justlikeit.php:167
-msgid " пользователь"
-msgstr ""
+#: D:\Repo\justlikeit/justlikeit.php:162
+msgid " users"
+msgstr "пользователям"
 
 #: D:\Repo\justlikeit/settings.php:31
-msgid "Настройки плагина Just Like It"
-msgstr ""
+msgid "Setting Just Like It Plugin"
+msgstr "Настройки плагина Just Like It"
 
 #: D:\Repo\justlikeit/settings.php:47
-msgid "Основные настройки"
-msgstr ""
+msgid "Genetal Settings"
+msgstr "Основные настройки"
 
 #: D:\Repo\justlikeit/settings.php:54
-msgid "Разрешить ставить лайки к постам"
-msgstr ""
+msgid "Allow to like posts"
+msgstr "Разрешить оценивать посты"
 
 #: D:\Repo\justlikeit/settings.php:63
 msgid ""
-"Типы постов, к которым разрешены лайки, через запятую (пустое поле = ко всем)"
-msgstr ""
+"Types of posts, which allowed to like, separated by commas (blank = all)"
+msgstr "Типы постов разрешенных к оценке (Пустое поле = все)"
 
 #: D:\Repo\justlikeit/settings.php:72
-msgid "Разрешить ставить лайки к комментариям"
-msgstr ""
+msgid "Allow to like comments"
+msgstr "Разрешить оценивать комментарии"
 
 #: D:\Repo\justlikeit/settings.php:81
-msgid "Надпись мне нравится"
-msgstr ""
+msgid ""
+"I like it Label ($img is replaced by the address of the folder IMG of the "
+"plugin)"
+msgstr "Вид кнопки мне нравится ($img заменяется на адрес папки IMG плагина)"
 
 #: D:\Repo\justlikeit/settings.php:90
-msgid "Надпись мне не нравится"
+msgid ""
+"I dont like it Label ($img is replaced by the address of the folder IMG of "
+"the plugin)"
 msgstr ""
+"Вид кнопки мне не нравится ($img заменяется на адрес папки IMG плагина)"
 
 #: D:\Repo\justlikeit/settings.php:99
-msgid "Вид вывода кол-ва лайков ($count)"
-msgstr ""
+msgid "View of like count ($count)"
+msgstr "Вид колличества лайков ($count)"
 
 #: D:\Repo\justlikeit/settings.php:108
-msgid "Текст окна для незарегистрированных пользователей"
+msgid ""
+"Text of box for unregistered users ($siteurl is replaced by the address of "
+"this site)"
 msgstr ""
+"Текст окна для не зарегистрированных пользователей ($siteurl заменяется на "
+"адрес сайта)"
 
 #: D:\Repo\justlikeit/settings.php:126
-msgid ""
-"Вы можете включить или отключить вывод кнопок \"Мне нравится\" там где нужно"
-msgstr ""
+msgid "You can enable or disable the buttons \"Like\" where needed"
+msgstr "Вы можете влючить или отключить оценки там где нужно"
 
 #: D:\Repo\justlikeit/settings.php:161
-msgid "Настройки джастлайка"
-msgstr ""
+msgid "Just like it Settings"
+msgstr "Настройки Just like it"

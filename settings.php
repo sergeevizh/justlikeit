@@ -28,7 +28,7 @@ class JustLikeItSettings {
 	// Пункта в настройках будет достаточно.... создадим....
 	function create_admin_page_option() 
 	{
-		add_options_page(__('Настройки плагина Just Like It', 'just-like-it'), 'Just Like It', 8, $this->settingOptionPage, array (&$this, 'printAdminPage'));
+		add_options_page(__('Setting Just Like It Plugin', 'just-like-it'), 'Just Like It', 8, $this->settingOptionPage, array (&$this, 'printAdminPage'));
 	}
 	
 	function setup_plugin_options() 
@@ -37,21 +37,21 @@ class JustLikeItSettings {
 		add_option('just_like_comments', 1);
 		add_option('just_like_posts_like_accepted', '');
 		if (FALSE == get_option('just_like_count_tags')){ add_option( 'just_like_count_tags', '$count');  }
-		if (FALSE == get_option("just_like_no_auth")) { add_option( "just_like_no_auth", "<a href='$siteurl/wp-login.php?action=register'>Зарегистрируйтесь</a> или <a href='$siteurl/wp-login.php'>Авторизуйтесь</a> чтобы оценивать записи"); }
+		if (FALSE == get_option("just_like_no_auth")) { add_option( "just_like_no_auth", "<a href='$siteurl/wp-login.php?action=register'>Register</a> or <a href='$siteurl/wp-login.php'>log in</a> to assess the record"); }
 		if (FALSE == get_option('just_like_like_label')){ add_option( 'just_like_like_label', '<img src=\'$img/heart.png\'/>');  }
 		if (FALSE == get_option('just_like_unlike_label')){	add_option( 'just_like_unlike_label', '<img src=\'$img/heart_active.png\'/>');  }
 		
 		//  Сначала создаём секцию.
 		add_settings_section(
 			'just_like_options_plugin_section',	
-			__('Основные настройки', 'just-like-it'),
+			__('Genetal Settings', 'just-like-it'),
 			array(&$this,'description_just_like_settings_section_callback'),
 			$this->settingOptionPage
 		); 
 
 		add_settings_field(   
 			'just_like_posts',	// ID used to identify the field throughout the theme  
-			__('Разрешить ставить лайки к постам', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Allow to like posts', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_posts_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -60,7 +60,7 @@ class JustLikeItSettings {
 		
 		add_settings_field(   
 			'just_like_posts_like_accepted',	// ID used to identify the field throughout the theme  
-			__('Типы постов, к которым разрешены лайки, через запятую (пустое поле = ко всем)', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Types of posts, which allowed to like, separated by commas (blank = all)'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_posts_like_accepted_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -69,7 +69,7 @@ class JustLikeItSettings {
 
 		add_settings_field(   
 			'just_like_comments',	// ID used to identify the field throughout the theme  
-			__('Разрешить ставить лайки к комментариям', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Allow to like comments', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_comments_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -78,7 +78,7 @@ class JustLikeItSettings {
 				
 		add_settings_field(   
 			'just_like_like_label',	// ID used to identify the field throughout the theme  
-			__('Надпись мне нравится ($img заменяется на адрес к папке IMG плагина)', 'just-like-it'),	// The label to the left of the option interface element  
+			__('I like it Label ($img is replaced by the address of the folder IMG of the plugin)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_like_label_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -87,7 +87,7 @@ class JustLikeItSettings {
 
 		add_settings_field(   
 			'just_like_unlike_label',	// ID used to identify the field throughout the theme  
-			__('Надпись мне не нравится ($img заменяется на адрес к папке IMG плагина)', 'just-like-it'),	// The label to the left of the option interface element  
+			__('I dont like it Label ($img is replaced by the address of the folder IMG of the plugin)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_unlike_label_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -96,7 +96,7 @@ class JustLikeItSettings {
 		
 		add_settings_field(   
 			'just_like_count_tags',	// ID used to identify the field throughout the theme  
-			__('Вид вывода кол-ва лайков ($count)', 'just-like-it'),	// The label to the left of the option interface element  
+			__('View of like count ($count)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_count_tags_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -105,7 +105,7 @@ class JustLikeItSettings {
 		
 		add_settings_field(   
 			'just_like_no_auth',	// ID used to identify the field throughout the theme  
-			__('Текст окна для незарегистрированных пользователей ($siteurl заменяется на адрес сайта)', 'just-like-it'),	// The label to the left of the option interface element  
+			__('Text of box for unregistered users ($siteurl is replaced by the address of this site)', 'just-like-it'),	// The label to the left of the option interface element  
 			array(&$this,'just_like_no_auth_callback'),	// The name of the function responsible for rendering the option interface  
 			$this->settingOptionPage,	// The page on which this option will be displayed  
 			'just_like_options_plugin_section',	// The name of the section to which this field belongs  
@@ -123,7 +123,7 @@ class JustLikeItSettings {
 	
 	function description_just_like_settings_section_callback()
 	{
-		_e('Вы можете включить или отключить вывод кнопок "Мне нравится" там где нужно', 'just-like-it');
+		_e('You can enable or disable the buttons "Like" where needed', 'just-like-it');
 	}
 	
 	function just_like_posts_callback()
@@ -158,7 +158,7 @@ class JustLikeItSettings {
 	function printAdminPage(){
 		?>
 		<div class=wrap>
-			<h2><?php _e('Настройки джастлайка', 'just-like-it'); ?></h2>
+			<h2><?php _e('Just like it Settings', 'just-like-it'); ?></h2>
 			  
 			<form method="post" action="options.php">  
 				<?php settings_fields('just_like_options_plugin_section'); ?>  

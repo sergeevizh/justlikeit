@@ -158,14 +158,16 @@ if (!class_exists('JustLikeIt')) {
 		function generate_count_label($count)
 		{
 			if(!get_option('just_like_count_tags')){
-				if ($count == 0) return;
-				$start = $count;
-				$count = abs($count) % 100;
-				$count1 = $count % 10;
-				if ($count > 10 && $count <= 20) return __('Одобрили ', 'just-like-it').$start.__(' пользователей', 'just-like-it').'.';
-				if ($count1 > 1 && $count1 < 5) return __('Одобрили ', 'just-like-it').$start.__(' пользователя', 'just-like-it').'.';
-				if ($count1 == 1) return __('Одобрил ', 'just-like-it').$start.__(' пользователь', 'just-like-it').'.';
-				return __('Одобрили ', 'just-like-it').$start.__(' пользователей', 'just-like-it').'.';
+				if ($count == 1) return __('Liked by ', 'just-like-it').$count.__(' user', 'just-like-it').'.';
+				if ($count != 1) return __('Liked by ', 'just-like-it').$count.__(' users', 'just-like-it').'.';
+				//nplurals=3; plural=(n%10==1 &amp;&amp; n%100!=11) ? 0 : ((n%10&gt;=2 &amp;&amp; n%10&lt;=4 &amp;&amp; (n%100&lt;10 || n%100&gt;=20)) ? 1 : 2);
+				//$start = $count;
+				//$count = abs($count) % 100;
+				////$count1 = $count % 10;
+				///if ($count > 10 && $count <= 20) return __('Liked by ', 'just-like-it').$start.__(' users', 'just-like-it').'.';
+				//if ($count1 > 1 && $count1 < 5) return __('Liked by ', 'just-like-it').$start.__(' users', 'just-like-it').'.';
+				//if ($count1 == 1) return __('Liked by ', 'just-like-it').$start.__(' users', 'just-like-it').'.';
+				//return __('Одобрили ', 'just-like-it').$start.__(' пользователей', 'just-like-it').'.';
 			}
 			else{
 				$return = get_option('just_like_count_tags');
