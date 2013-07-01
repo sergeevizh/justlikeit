@@ -157,9 +157,9 @@ if (!class_exists('JustLikeIt')) {
 
 		function generate_count_label($count)
 		{
-			if(!get_option('just_like_count_tags')){
-				if ($count == 1) return __('Liked by ', 'just-like-it').$count.__(' user', 'just-like-it').'.';
-				if ($count != 1) return __('Liked by ', 'just-like-it').$count.__(' users', 'just-like-it').'.';
+			//if(!get_option('just_like_count_tags')){
+				//if ($count == 1) return __('Liked by ', 'just-like-it').$count.__(' user', 'just-like-it').'.';
+				//if ($count != 1) return __('Liked by ', 'just-like-it').$count.__(' users', 'just-like-it').'.';
 				//nplurals=3; plural=(n%10==1 &amp;&amp; n%100!=11) ? 0 : ((n%10&gt;=2 &amp;&amp; n%10&lt;=4 &amp;&amp; (n%100&lt;10 || n%100&gt;=20)) ? 1 : 2);
 				//$start = $count;
 				//$count = abs($count) % 100;
@@ -168,11 +168,11 @@ if (!class_exists('JustLikeIt')) {
 				//if ($count1 > 1 && $count1 < 5) return __('Liked by ', 'just-like-it').$start.__(' users', 'just-like-it').'.';
 				//if ($count1 == 1) return __('Liked by ', 'just-like-it').$start.__(' users', 'just-like-it').'.';
 				//return __('Одобрили ', 'just-like-it').$start.__(' пользователей', 'just-like-it').'.';
-			}
-			else{
+			//}
+			//else{
 				$return = get_option('just_like_count_tags');
 				return str_replace('$count', $count, $return);
-			}
+			//}
 		}
 		
 		function add_ajax_library() 
