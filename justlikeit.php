@@ -1,18 +1,13 @@
 <?php
 /*
 Plugin Name: Just Like It
-Plugin URI: http://localhost/
-Description: Just Like It - плагин добавляет кнопку 'Like' к постам и комментариям.
+Plugin URI: http://casepress.org/
+Description: Just Like It - plugin adds the ability to evaluate the posts and comments to them.
 Version: 0.1
 Author: Rasko
-Author URI: http://localhost/
+Author URI: http://casepress.org/
 */
-	
-			/* 	1)	Опция, к каким типам постов можно ставить лайки			+
-				2) 	В зависимости от опции...
-					а)	Вывод кнопок										-
-					б)	Проверка в функции лайка 
-					*/
+
 // Stop direct call
 if (!empty($_SERVER['SCRIPT_FILENAME']) && basename(__file__) == basename($_SERVER['SCRIPT_FILENAME']))
 	die ('Please do not load this page directly. Thanks!');
