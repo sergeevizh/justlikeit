@@ -141,7 +141,7 @@ if (!class_exists('JustLikeIt')) {
 			}
 			$siteurl = get_site_url();
 			$content = $content.'<div class="just-like-'.$type.'-frame"><span id="just-like-'.$type.'-count-'.$id.'" class="just-like-'.$type.'-count">'.$this->generate_count_label($count).'</span><a href="#" rel="'.$type.'_'.$id.'" class="just-like-'.$type.'-link '.$do.'">'.$text.'</a></div>';
-			$content .= '<div class="g-hidden">
+			if ($logged_in==0) $content .= '<div class="g-hidden">
 						<div class="box-modal" id="registerModal">
 							<div class="box-modal_close arcticmodal-close">закрыть</div>'.
 							str_replace('$siteurl', $siteurl, get_option('just_like_no_auth'))
