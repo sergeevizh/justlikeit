@@ -14,7 +14,7 @@ Just Like It - plugin adds the ability to evaluate the posts and comments to the
 
 == Installation ==
 
-1. Upload just-like-it.zip and unzip this into the `/wp-content/plugins/` directory
+1. Upload master.zip and unzip this into the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently Asked Questions ==
